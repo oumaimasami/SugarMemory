@@ -2,7 +2,15 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const saléRoutes = require("./routes/salé.routes");
+const saleRoutes = require("./routes/Sale.routes");
+const zouzaRoutes = require("./routes/Zouza.routes");
+const sableRoutes = require("./routes/Sable.routes");
+const sucreRoutes = require("./routes/Sucre.routes");
+const datteRoutes = require("./routes/Datte.routes");
+const ghraybaRoutes = require("./routes/Ghrayba.routes");
+const epicerieRoutes = require("./routes/Epicerie.routes");
+const gateauRoutes = require("./routes/Gateau.routes");
+const mignardiseRoutes = require("./routes/Mignardise.routes");
 
 const app = express();
 const PORT = 5000;
@@ -10,9 +18,23 @@ const PORT = 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Replace this with your React app's URL in production
+  })
+);
 
 // Routes
-app.use("/api/salé", saléRoutes);
+app.use("/api/sale", saleRoutes);
+app.use("/api/zouza", zouzaRoutes);
+app.use("/api/sable", sableRoutes);
+app.use("/api/sucre", sucreRoutes);
+app.use("/api/dattes", datteRoutes);
+app.use("/api/ghrayba", ghraybaRoutes);
+app.use("/api/epicerie", epicerieRoutes);
+app.use("/api/gateau", gateauRoutes);
+app.use("/api/mignardise", mignardiseRoutes);
+app.use("/uploads", express.static("uploads"));
 
 // Connect to MongoDB
 mongoose

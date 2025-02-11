@@ -1,79 +1,18 @@
-import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Produit from "../components/Produit";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Sortingmenu from "../components/Sortingmenu";
 import image from "../components/sources/2.jpg";
 
-const initialBrownies = [
-  { title: "Brownies Oreo", description: "5,000 Dt" },
-  { title: "Brownies Lotus", description: "5,000 Dt" },
-  { title: "Brownies Cake", description: "25,000 Dt" },
-  { title: "Brownies Fekia", description: "5,000 Dt" },
-  { title: "Cookies", description: "1,000 Dt" },
-  { title: "Brownies Oreo", description: "5,000 Dt" },
-  { title: "Brownies Lotus", description: "5,000 Dt" },
-  { title: "Brownies Cake", description: "25,000 Dt" },
-  { title: "Brownies Fekia", description: "5,000 Dt" },
-  { title: "Cookies", description: "1,000 Dt" },
-  { title: "Brownies Oreo", description: "5,000 Dt" },
-  { title: "Brownies Lotus", description: "5,000 Dt" },
-  { title: "Brownies Cake", description: "25,000 Dt" },
-  { title: "Brownies Fekia", description: "5,000 Dt" },
-  { title: "Cookies", description: "1,000 Dt" },
-  { title: "Brownies Oreo", description: "5,000 Dt" },
-  { title: "Brownies Lotus", description: "5,000 Dt" },
-  { title: "Brownies Cake", description: "25,000 Dt" },
-  { title: "Brownies Fekia", description: "5,000 Dt" },
-  { title: "Cookies", description: "1,000 Dt" },
-  { title: "Brownies Oreo", description: "5,000 Dt" },
-  { title: "Brownies Lotus", description: "5,000 Dt" },
-  { title: "Brownies Cake", description: "25,000 Dt" },
-  { title: "Brownies Fekia", description: "5,000 Dt" },
-  { title: "Cookies", description: "1,000 Dt" },
-  { title: "Brownies Oreo", description: "5,000 Dt" },
-  { title: "Brownies Lotus", description: "5,000 Dt" },
-  { title: "Brownies Cake", description: "25,000 Dt" },
-  { title: "Brownies Fekia", description: "5,000 Dt" },
-  { title: "Cookies", description: "1,000 Dt" },
-  { title: "Brownies Oreo", description: "5,000 Dt" },
-  { title: "Brownies Lotus", description: "5,000 Dt" },
-  { title: "Brownies Cake", description: "25,000 Dt" },
-  { title: "Brownies Fekia", description: "5,000 Dt" },
-  { title: "Cookies", description: "1,000 Dt" },
-  { title: "Brownies Oreo", description: "5,000 Dt" },
-  { title: "Brownies Lotus", description: "5,000 Dt" },
-  { title: "Brownies Cake", description: "25,000 Dt" },
-  { title: "Brownies Fekia", description: "5,000 Dt" },
-  { title: "Cookies", description: "1,000 Dt" },
-  { title: "Brownies Oreo", description: "5,000 Dt" },
-  { title: "Brownies Lotus", description: "5,000 Dt" },
-  { title: "Brownies Cake", description: "25,000 Dt" },
-  { title: "Brownies Fekia", description: "5,000 Dt" },
-  { title: "Cookies", description: "1,000 Dt" },
-  { title: "Brownies Oreo", description: "5,000 Dt" },
-  { title: "Brownies Lotus", description: "5,000 Dt" },
-  { title: "Brownies Cake", description: "25,000 Dt" },
-  { title: "Brownies Fekia", description: "5,000 Dt" },
-  { title: "Cookies", description: "1,000 Dt" },
-  { title: "Brownies Oreo", description: "5,000 Dt" },
-  { title: "Brownies Lotus", description: "5,000 Dt" },
-  { title: "Brownies Cake", description: "25,000 Dt" },
-  { title: "Brownies Fekia", description: "5,000 Dt" },
-  { title: "Cookies", description: "1,000 Dt" },
-  { title: "Brownies Oreo", description: "5,000 Dt" },
-  { title: "Brownies Lotus", description: "5,000 Dt" },
-  { title: "Brownies Cake", description: "25,000 Dt" },
-  { title: "Brownies Fekia", description: "5,000 Dt" },
-  { title: "Cookies", description: "1,000 Dt" },
-];
-
 export default function Saveurs() {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
   const { itemName } = useParams(); // Get the item name from the URL
   const [displayCount, setDisplayCount] = useState(9); // Default to showing 9 items
   const [currentPage, setCurrentPage] = useState(1); // Current page
-  const [brownies] = useState(initialBrownies); // State for the list of brownies
 
-  const totalPages = Math.ceil(brownies.length / displayCount); // Calculate total pages
+  const totalPages = Math.ceil(data.length / displayCount); // Calculate total pages
 
   const handleDisplayChange = (count) => {
     setDisplayCount(count); // Update the number of items displayed
@@ -88,10 +27,20 @@ export default function Saveurs() {
 
   // Get the brownies for the current page
   const startIndex = (currentPage - 1) * displayCount;
-  const displayedBrownies = brownies.slice(
-    startIndex,
-    startIndex + displayCount
-  );
+  const displayedData = data.slice(startIndex, startIndex + displayCount);
+
+  // Fetch all Datte items from the back-end when the component mounts
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/${itemName}`)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        setError("An error occurred while fetching data");
+        console.error(err);
+      });
+  }, [itemName]);
 
   return (
     <>
@@ -132,11 +81,12 @@ export default function Saveurs() {
           <Sortingmenu />
         </div>
         <div className="row justify-content-center">
-          {displayedBrownies.map((item, index) => (
+          {displayedData.map((item, index) => (
             <Produit
               key={index}
-              title={item.title}
-              description={item.description}
+              title={item.name}
+              description={item.price}
+              image={item.image}
             />
           ))}
         </div>

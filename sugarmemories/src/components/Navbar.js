@@ -46,17 +46,8 @@ export default function Navbar() {
                 <li>
                   <Link
                     className="dropdown-item"
-                    produit="Cookies"
-                    to="/saveurs/cookies"
-                  >
-                    Cookies
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="dropdown-item"
                     produit="Sablé"
-                    to="/saveurs/sablé"
+                    to="/saveurs/sable"
                   >
                     Sablé
                   </Link>
@@ -65,27 +56,19 @@ export default function Navbar() {
                   <Link
                     className="dropdown-item"
                     produit="Salé"
-                    to="/saveurs/salé"
+                    to="/saveurs/sale"
                   >
                     Salé
                   </Link>
                 </li>
+
                 <li>
                   <Link
                     className="dropdown-item"
-                    produit="Brownies"
-                    to="/saveurs/brownies"
+                    produit="Sucrés"
+                    to="/saveurs/sucre"
                   >
-                    Brownies
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className="dropdown-item"
-                    produit="Blondies"
-                    to="/saveurs/blondies"
-                  >
-                    Blondies
+                    Sucrés
                   </Link>
                 </li>
                 <li>
