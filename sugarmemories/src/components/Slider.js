@@ -1,18 +1,26 @@
-import React, { useState } from "react";
-import image from "./sources/cookies.jpg";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
 const Slider = () => {
-  const items = [
-    { id: 1, image: "./sources/brookie.png", title: "Cookies" },
-    { id: 2, image: "./sources/brownies.jpg", title: "Brownies" },
-    { id: 3, image: "./sources/sale.jpg", title: "Salé" },
-    { id: 4, image: "./sources/ghrayba.jpg", title: "Epecerie" },
-    { id: 5, image: "./sources/epicerie.jpg", title: "Ghrayba" },
-  ];
-
+  const [items, setItems] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const totalItems = items.length;
   const visibleItems = 5;
+
+  // Fonction pour récupérer les données depuis l'API
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/saveurs");
+        setItems(response.data); // Assurez-vous que la réponse est bien un tableau d'objets
+      } catch (error) {
+        console.error("Erreur lors de la récupération des données :", error);
+      }
+    };
+
+    fetchData();
+  }, []); // [] signifie que l'effet s'exécute uniquement au montage du composant
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalItems);
@@ -41,14 +49,25 @@ const Slider = () => {
         &#8250;
       </button>
       <div className="slider-container">
-        {getVisibleItems().map((item) => (
-          <div key={item.id}>
-            <img src={image} alt={item.title} className="slider-image" />
-            <p className="slider-title">{item.title}</p>
-          </div>
-        ))}
+        {items.length > 0 ? (
+          getVisibleItems().map((item) => (
+            <div key={item.id}>
+              <Link to={item.link}>
+                <img
+                  src={`http://localhost:5000${item.image}`}
+                  alt={item.name}
+                  className="slider-image"
+                />
+                <h6 className="slider-title">{item.name}</h6>
+              </Link>
+            </div>
+          ))
+        ) : (
+          <p>Chargement des saveurs...</p>
+        )}
       </div>
     </div>
   );
 };
+
 export default Slider;

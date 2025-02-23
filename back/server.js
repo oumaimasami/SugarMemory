@@ -11,12 +11,15 @@ const ghraybaRoutes = require("./routes/Ghrayba.routes");
 const epicerieRoutes = require("./routes/Epicerie.routes");
 const gateauRoutes = require("./routes/Gateau.routes");
 const mignardiseRoutes = require("./routes/Mignardise.routes");
-
+const saveursRoutes = require("./routes/Saveurs.routes");
+const contactRoutes = require("./routes/Contact.routes");
+const bodyParser = require("body-parser");
 const app = express();
 const PORT = 5000;
 
 // Middleware
 app.use(cors());
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(
   cors({
@@ -34,6 +37,8 @@ app.use("/api/ghrayba", ghraybaRoutes);
 app.use("/api/epicerie", epicerieRoutes);
 app.use("/api/gateau", gateauRoutes);
 app.use("/api/mignardise", mignardiseRoutes);
+app.use("/api/saveurs", saveursRoutes);
+app.use("/api/contact", contactRoutes);
 app.use("/uploads", express.static("uploads"));
 
 // Connect to MongoDB
