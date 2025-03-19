@@ -1,11 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    nom: "",
+    prenom: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_m0vbwph",
+        "template_t9ndvcp",
+        e.target,
+        "ptfaZCxaVJxa4kHTZ"
+      )
+      .then(() => {
+        toast.success("📧 Email sent successfully!");
+        setFormData({ nom: "", prenom: "", email: "", message: "" }); // ✅ Clear form
+      })
+      .catch((error) => {
+        toast.error("❌ Error sending email. Please try again.");
+        console.error(error);
+      });
+  };
+
   return (
     <div className="contact-page container my-5 py-5">
+      <h3 className="pt-4 mt-5 text-center contact-title">
+        Aidez-nous à Progresser En Nous Faisant Part De Vos Suggestions
+      </h3>
       <form
         className="row g-3 justify-content-center needs-validation my-5"
         noValidate
+        onSubmit={sendEmail}
       >
         <div className="col-md-4">
           <label htmlFor="validationCustom01" className="form-label">
@@ -16,6 +53,8 @@ export default function Contact() {
             className="form-control"
             id="validationCustom01"
             name="nom"
+            value={formData.nom}
+            onChange={handleChange}
             required
           />
         </div>
@@ -28,6 +67,8 @@ export default function Contact() {
             className="form-control"
             id="validationCustom02"
             name="prenom"
+            value={formData.prenom}
+            onChange={handleChange}
             required
           />
         </div>
@@ -40,7 +81,8 @@ export default function Contact() {
             className="form-control"
             id="exampleInputEmail1"
             name="email"
-            aria-describedby="emailHelp"
+            value={formData.email}
+            onChange={handleChange}
             required
           />
           <div id="emailHelp" className="form-text">
@@ -56,6 +98,8 @@ export default function Contact() {
             id="exampleFormControlTextarea1"
             name="message"
             rows="3"
+            value={formData.message}
+            onChange={handleChange}
             required
           ></textarea>
         </div>
@@ -65,6 +109,8 @@ export default function Contact() {
           </button>
         </div>
       </form>
+      {/* Notification Component */}
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 }

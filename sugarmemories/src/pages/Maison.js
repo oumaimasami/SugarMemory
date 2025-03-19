@@ -13,7 +13,7 @@ export default function Maison() {
 
       <h2 className="mx-5 mt-5"> Notre pâtisserie « Sugar Memories » </h2>
       <div className="row">
-        <div className="about mx-5 col-5">
+        <div className="about mx-5 col-lg-5 col-md-5 col-xs-8">
           <h3 className="about-title mb-4 mt-2">Notre histoire</h3>
           <p className="about-decription">
             Au cœur de <b>Tunis</b>, capitale vibrante des saveurs authentiques,
@@ -52,7 +52,7 @@ export default function Maison() {
             nous rassemblent.
           </p>
         </div>
-        <div className="about-section2 col-6">
+        <div className="about-section2 col-md-6 col-xs-12">
           <img className="about-image" src={about} alt="..." />
           <div className="gradient-line mb-4 mt-5"></div>
           <a

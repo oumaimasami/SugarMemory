@@ -23,6 +23,9 @@ export default function Caraousel() {
           />
         </div>
         <div className="carousel-item">
+          <img src="12.jpg" className="d-block w-100 caraouselpic" alt="pic5" />
+        </div>
+        <div className="carousel-item">
           <img
             src="caraousel2.png"
             className="d-block w-100 caraouselpic"

@@ -195,7 +195,7 @@ body,
 }
 
 .contact-page {
-  height: 100vh; /* Full viewport height */
+  height: 110vh; /* Full viewport height */
   background-image: url("./components/sources/contact.jpg"); /* Path to your image */
   background-size: cover; /* Ensures the image covers the entire area */
   background-position: center; /* Centers the image */
@@ -271,4 +271,9 @@ body,
 }
 .dropdown-sort {
   margin-top: -3px;
+}
+.contact-title {
+  color: rgba(219, 147, 14, 0.788);
+  font-family: Satisfy, sans-serif;
+  font-size: 35px;
 }

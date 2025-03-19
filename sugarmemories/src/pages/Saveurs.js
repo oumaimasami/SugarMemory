@@ -41,6 +41,7 @@ export default function Saveurs() {
         console.error(err);
       });
   }, [itemName]);
+  console.log(error);
 
   return (
     <>
