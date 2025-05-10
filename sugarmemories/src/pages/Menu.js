@@ -8,7 +8,7 @@ export default function Menu() {
         scrolling="no"
         title="menu website"
         className="fp-iframe"
-        src="https://heyzine.com/flip-book/711291f012.html"
+        src="https://heyzine.com/flip-book/a36667542d.html"
       ></iframe>
     </div>
   );

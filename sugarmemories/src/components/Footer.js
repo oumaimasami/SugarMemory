@@ -1,40 +1,79 @@
 import React from "react";
 import "./Footer.css";
-import footerImage from "./sources/footer.png";
+import logo from "./sources/LOG.png";
+import { Link } from "react-router-dom";
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="footer mt-4">
-      <div className="footer-image-container">
-        <img src={footerImage} alt="Footer" className="footer-image" />
-        <div className="footer-text row ">
-          <div className="col-md-3 ">
-            <a
-              href="https://www.facebook.com/saby.sho"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="bi bi-facebook about-icon"></i>
-            </a>
-            <a
-              href="https://www.instagram.com/sugar.memories.bysaby/?fbclid=IwY2xjawH9swdleHRuA2FlbQIxMAABHSTigcPreU7o4K_DnfY4hvXYwHX0DmjiWGddW9qz64I69K0eFM-3LagPCQ_aem_XvKIrbsVvjRNMyq3OjS_Ww#"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="bi bi-instagram about-icon"></i>
-            </a>
-            <a
-              href="https://www.tiktok.com/@sugar.memories.by?is_from_webapp=1&sender_device=pc"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="bi bi-tiktok about-icon"></i>
-            </a>
+    <footer className="footer bg-light text-dark pt-5 pb-4">
+      <div className="container">
+        <div className="row text-center text-md-start">
+          {/* Logo & Description */}
+          <div className="col-12 col-md-6 col-lg-4 mb-4">
+            <img
+              src={logo}
+              alt="Sugar Memories Logo"
+              className="footer-logo mb-3"
+            />
+            <p className="footer-description">
+              Sugar Memories By Saby est une invitation à savourer l’élégance et
+              la tendresse sucrée, où chaque création raconte une histoire
+              gourmande.
+            </p>
           </div>
+
+          {/* Contact */}
+          <div className="col-12 col-md-6 col-lg-4 mb-4">
+            <h5 className="mb-3 footertitle">Contact</h5>
+            <p>
+              <i className="fas fa-map-marker-alt me-2"></i> Ariana, Tunisie
+            </p>
+            <p>
+              <i className="fas fa-envelope me-2"></i> sugarmemories8@gmail.com
+            </p>
+            <p>
+              <i className="fas fa-phone me-2"></i> +216 90 959 220
+            </p>
+            <p>
+              <i className="fab fa-instagram me-2"></i> @sugar.memories.bysaby
+            </p>
+          </div>
+
+          {/* (Optional) Links or more content */}
+          <div className="col-12 col-lg-4 mb-4 text-md-start text-center">
+            <h5 className="mb-3 footertitle">Navigation</h5>
+            <p>
+              <Link to="/menu" className="footer-link">
+                Menu
+              </Link>
+            </p>
+
+            <p>
+              <Link to="/contact" className="footer-link">
+                Contact
+              </Link>
+            </p>
+            <p>
+              <Link to="/maison" className="footer-link">
+                À Propos
+              </Link>
+            </p>
+            <p>
+              <Link to="/saveurs" className="footer-link">
+                Les Saveurs
+              </Link>
+            </p>
+          </div>
+        </div>
+
+        <hr />
+        <div className="text-center mt-3">
+          <p className="mb-0">
+            &copy; {new Date().getFullYear()} Sugar Memories. Tous droits
+            réservés.
+          </p>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

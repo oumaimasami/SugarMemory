@@ -6,10 +6,34 @@ import logo from "./sources/logo1.png";
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <div className="container-fluid d-flex flex-column align-items-center justify-content-center">
-        <div className="d-flex align-items-center">
-          {/* Left Side of Navbar */}
-          <ul className="navbar-nav d-flex flex-row me-5">
+      <div className="container-fluid position-relative">
+        {/* Burger menu toggle for small screens */}
+        <button
+          className="navbar-toggler position-absolute end-0 me-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+          aria-controls="navbarContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/* Logo always centered */}
+        <div className="navbar-brand mx-auto position-absolute start-50 translate-middle-x">
+          <Link to="/">
+            <img className="logo" src={logo} alt="Logo" />
+          </Link>
+        </div>
+
+        {/* Full navbar collapsible content */}
+        <div
+          className="collapse navbar-collapse justify-content-between"
+          id="navbarContent"
+        >
+          {/* Left side menu */}
+          <ul className="navbar-nav ms-lg-3">
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -25,115 +49,67 @@ export default function Navbar() {
                 aria-labelledby="navbarScrollingDropdown"
               >
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    produit="Dattes"
-                    to="/saveurs/dattes"
-                  >
+                  <Link className="dropdown-item" to="/saveurs/dattes">
                     Dattes
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    produit="Mignardise"
-                    to="/saveurs/mignardise"
-                  >
+                  <Link className="dropdown-item" to="/saveurs/mignardise">
                     Mignardise
                   </Link>
                 </li>
-
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    produit="Sablé"
-                    to="/saveurs/sable"
-                  >
+                  <Link className="dropdown-item" to="/saveurs/sable">
                     Sablé
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    produit="Salé"
-                    to="/saveurs/sale"
-                  >
+                  <Link className="dropdown-item" to="/saveurs/sale">
                     Salé
                   </Link>
                 </li>
-
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    produit="Sucrés"
-                    to="/saveurs/sucre"
-                  >
+                  <Link className="dropdown-item" to="/saveurs/sucre">
                     Sucrés
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    produit="Epicerie"
-                    to="/saveurs/epicerie"
-                  >
-                    Epicerie Fine
+                  <Link className="dropdown-item" to="/saveurs/epicerie">
+                    Épicerie Fine
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    produit="Zouza"
-                    to="/saveurs/zouza"
-                  >
+                  <Link className="dropdown-item" to="/saveurs/zouza">
                     Zouza
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    produit="Ghrayba"
-                    to="/saveurs/ghrayba"
-                  >
+                  <Link className="dropdown-item" to="/saveurs/ghrayba">
                     Ghrayba
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="dropdown-item"
-                    produit="gateau"
-                    to="/saveurs/gateau"
-                  >
-                    Gàteaux Personnalisés
+                  <Link className="dropdown-item" to="/saveurs/gateau">
+                    Gâteaux Personnalisés
                   </Link>
                 </li>
               </ul>
             </li>
-
-            <li className="nav-item me-3">
+            <li className="nav-item">
               <Link className="nav-link" to="/Menu">
                 Menu
               </Link>
             </li>
           </ul>
 
-          {/* Logo */}
-          <Link className="navbar-brand mx-4" to="/">
-            <img
-              className="logo"
-              src={logo} // Replace with your logo's path
-              alt="Logo"
-            />
-          </Link>
-
-          {/* Right Side of Navbar */}
-          <ul className="navbar-nav d-flex flex-row ms-5">
-            <li className="nav-item me-3">
+          {/* Right side menu */}
+          <ul className="navbar-nav me-lg-3">
+            <li className="nav-item">
               <Link className="nav-link" to="/maison">
                 À Propos
               </Link>
             </li>
-            <li className="nav-item me-3">
+            <li className="nav-item">
               <Link className="nav-link" to="/contact">
                 Contact
               </Link>

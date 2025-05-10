@@ -11,12 +11,12 @@ export default function Review() {
   return (
     <div className="container mt-4 pt-3">
       <div className="row justify-content-center my-4 py-4">
-        <div className="col-6 no-space">
+        <div className="col-md-6 col-xs-12 no-space">
           <img className="review-image" src={order} alt="..." />
         </div>
         <div
           id="carouselExampleIndicators"
-          className="carousel slide col-5 no-space"
+          className="carousel slide col-md-5 col-xs-12 no-space"
           data-bs-ride="carousel"
         >
           <div className="carousel-indicators">

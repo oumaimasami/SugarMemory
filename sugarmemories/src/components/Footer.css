@@ -1,25 +1,40 @@
-.footer {
-  position: relative; /* Ensure proper positioning for text overlay */
-  overflow: hidden; /* Hide anything that overflows the footer area */
-}
-
-.footer-image-container {
-  position: relative;
-}
-
-.footer-image {
-  width: 100%; /* Make the image responsive */
+.footer-logo {
+  width: 150px;
   height: auto;
 }
+.footertitle {
+  font-family: Satisfy, sans-serif;
+  font-size: 28px;
+}
 
-.footer-text {
-  position: absolute; /* Position text on top of the image */
-  top: 72%; /* Center vertically */
-  left: 100%; /* Center horizontally */
-  transform: translate(
-    -50%,
-    -50%
-  ); /* Adjust positioning to align with the center */
-  color: black; /* Make the text visible over the image */
-  text-align: justify; /* Center the text */
+.footer-description {
+  font-size: 14px;
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #343a40;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #db930e;
+}
+
+.footer i {
+  color: #db930e;
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .footer-logo {
+    width: 100px;
+  }
+
+  .footer-description {
+    font-size: 13px;
+  }
 }
