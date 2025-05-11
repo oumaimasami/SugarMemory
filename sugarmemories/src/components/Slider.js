@@ -12,7 +12,9 @@ const Slider = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/saveurs");
+        const response = await axios.get(
+          `${process.env.REACT_APP_BACKEND_URL}/api/saveurs`
+        );
         setItems(response.data); // Assurez-vous que la réponse est bien un tableau d'objets
       } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);

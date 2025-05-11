@@ -32,7 +32,7 @@ export default function Saveurs() {
   // Fetch all Datte items from the back-end when the component mounts
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}${itemName}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/${itemName}`)
       .then((response) => {
         setData(response.data);
       })
