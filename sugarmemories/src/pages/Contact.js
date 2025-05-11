@@ -19,10 +19,10 @@ export default function Contact() {
     e.preventDefault();
     emailjs
       .sendForm(
-        "service_m0vbwph",
-        "template_t9ndvcp",
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
         e.target,
-        "ptfaZCxaVJxa4kHTZ"
+        process.env.REACT_APP_PUBLIC_KEY
       )
       .then(() => {
         toast.success("📧 Email sent successfully!");
