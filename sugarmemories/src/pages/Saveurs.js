@@ -86,7 +86,7 @@ export default function Saveurs() {
             <Produit
               key={index}
               title={item.name}
-              description={item.price}
+              price={item.price}
               image={item.image}
             />
           ))}

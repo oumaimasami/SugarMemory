@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000", // Replace this with your React app's URL in production
+    origin: process.env.FRONT_API, // Replace this with your React app's URL in production
   })
 );
 

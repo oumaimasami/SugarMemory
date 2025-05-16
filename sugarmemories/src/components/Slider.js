@@ -54,9 +54,9 @@ const Slider = () => {
         {items.length > 0 ? (
           getVisibleItems().map((item) => (
             <div key={item.id}>
-              <Link to={item.link}>
+              <Link className="link-decoration" to={item.link}>
                 <img
-                  src={`http://localhost:5000${item.image}`}
+                  src={`${process.env.REACT_APP_BACKEND_URL}${item.image}`}
                   alt={item.name}
                   className="slider-image"
                 />

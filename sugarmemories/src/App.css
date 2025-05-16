@@ -277,3 +277,12 @@ body,
   font-family: Satisfy, sans-serif;
   font-size: 35px;
 }
+.link-decoration {
+  text-decoration: unset;
+}
+.link-decoration :hover {
+  color: rgba(219, 147, 14, 0.788);
+}
+.about-icon :hover {
+  color: rgba(219, 147, 14, 0.788);
+}
