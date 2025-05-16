@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.FRONT_API, // Replace this with your React app's URL in production
+    origin: "https://sugarmemoriesbysaby.vercel.app/", // Replace this with your React app's URL in production
   })
 );
 
