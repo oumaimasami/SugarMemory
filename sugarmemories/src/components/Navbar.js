@@ -41,6 +41,7 @@ export default function Navbar() {
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
+                href="http://localhost:3000/"
               >
                 Les Saveurs
               </a>
