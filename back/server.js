@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000", // Replace this with your React app's URL in production
+    origin: "https://sugarmemories.netlify.app", // Replace this with your React app's URL in production
   })
 );
 
